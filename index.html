@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4fe567a701.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/weekly-results-filter.css" />
+    <link rel="stylesheet" href="css/top-menu-media-queries.css">
+    <link rel="stylesheet" href="css/boxes-media-queries.css">
+    <link rel="stylesheet" href="css/popup-css-only.css">
+    <link rel="stylesheet" href="css/accordian.css">
+    <link rel="stylesheet" href="css/tooltip.css">
+    <link rel="stylesheet" href="css/learn-sponsor-media-queries.css">
+    <link rel="stylesheet" href="css/team-contact-map-media-queries.css">
+    <link rel="stylesheet" href="js/magnifier.js">
+    <link rel="stylesheet" href="js/smooth-scrolling.js">
+    <link rel="stylesheet" href="css/contact-form.css">
+    <title>Document</title>
+
+    <!-- THIS RUNS THE MAGNIFYING GLASS SCRIPT -----------COMMENT ENTIRE SCRIPT TO REMOVE------- -->
+    <script>
+        function magnify(imgID, zoom) {
+            var img, glass, w, h, bw;
+            img = document.getElementById(imgID);
+            /*create magnifier glass:*/
+            glass = document.createElement("DIV");
+            glass.setAttribute("class", "img-magnifier-glass");
+            /*insert magnifier glass:*/
+            img.parentElement.insertBefore(glass, img);
+            /*set background properties for the magnifier glass:*/
+            glass.style.backgroundImage = "url('" + img.src + "')";
+            glass.style.backgroundRepeat = "no-repeat";
+            glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+            bw = 3;
+            w = glass.offsetWidth / 2;
+            h = glass.offsetHeight / 2;
+            /*execute a function when someone moves the magnifier glass over the image:*/
+            glass.addEventListener("mousemove", moveMagnifier);
+            img.addEventListener("mousemove", moveMagnifier);
+            /*and also for touch screens:*/
+            glass.addEventListener("touchmove", moveMagnifier);
+            img.addEventListener("touchmove", moveMagnifier);
+            function moveMagnifier(e) {
+              var pos, x, y;
+              /*prevent any other actions that may occur when moving over the image*/
+              e.preventDefault();
+              /*get the cursor's x and y positions:*/
+              pos = getCursorPos(e);
+              x = pos.x;
+              y = pos.y;
+              /*prevent the magnifier glass from being positioned outside the image:*/
+              if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+              if (x < w / zoom) {x = w / zoom;}
+              if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+              if (y < h / zoom) {y = h / zoom;}
+              /*set the position of the magnifier glass:*/
+              glass.style.left = (x - w) + "px";
+              glass.style.top = (y - h) + "px";
+              /*display what the magnifier glass "sees":*/
+              glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+            }
+            function getCursorPos(e) {
+              var a, x = 0, y = 0;
+              e = e || window.event;
+              /*get the x and y positions of the image:*/
+              a = img.getBoundingClientRect();
+              /*calculate the cursor's x and y coordinates, relative to the image:*/
+              x = e.pageX - a.left;
+              y = e.pageY - a.top;
+              /*consider any page scrolling:*/
+              x = x - window.pageXOffset;
+              y = y - window.pageYOffset;
+              return {x : x, y : y};
+            }
+          }
+    </script>
+</head>
+
+    <body>
+        <!-- DISAPEARING NAVBAR ------------------------------------------------------------- -->
+        <nav id="my-nav">
+            <div id="toggle">
+            </div>
+            <div id="topmenu">
+                <img id="bpu-logo" src="img/BPU logo Black 210x72px.jpg" alt="">
+                <ul>
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="weekly-results.html">Weekly Results</a></li>
+                    <li><a href="#popup8">Leaderboard</a></li>
+                    <li><a href="stats.html">Stats</a></li>
+                    <li><a href="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Australia%2FBrisbane&amp;src=YWttaDkxYTg2czBmZTBpbmpraGUxb3A3bXNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=M2piaG92cjc4dTUzaDhkc2QxMWNxNjN2b2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23E67C73&amp;color=%237986CB" target="_blank">Event Calendar</a></li>
+                    <li><a href="Index.html#map-info">Map</a></li>
+                    <!-- <li><a href="Index.html#info-contactus">Contact</a></li> -->
+                </ul>
+            </div>
+        </nav>
+
+        <!-- NEW JOIN US SECTION ------------------------------------------------------------- -->
+        <section id="joinus-section">
+            <div id="best-poker">
+                <h1 id="join-us">Join us for the <span> Best Poker Experience in Brisbane </span></h1>
+                <p id="a-range">A range of Tournament structures to meet all budgets.</p>
+                <img id="qa" src="img/qa BLACK 139x113px.jpg"alt="" width="139" height="113"/>
+                <img id="aps" src="img/APS Black 113x113px.jpg"alt="" width="113" height="113"/>
+                <img id="bpu-logo2" src="img/BPU logo Black 210x72px - 2.jpg" alt="">
+            </div>
+        </section>
+    
+        <!-- HENDON MOB ---------------------------------------------------------------------- -->
+
+        <section id="blue-band">
+                <p id="all-results">All results posted on the "Hendon Mob"</p>
+            <div>
+                <input id="user-input"type="text"class="form-control" placeholder="Enter your First and Last name"/>
+            </div>
+                <button id="hendon-mob-button" onclick="clickyClick()">Check Yours!</button>
+        </section>
+
+        <!-- BOXES TO GO TO EACH DAYS TOURNAMENT TYPES ----------------ADD MORE HERE----------------- -->
+    
+        <section id="boxes-section">
+            <div id="boxes">
+
+                <!-- GO TO SUNDAY  -->
+                <div id="box-click1">
+                    <div id="cal-img">
+                        <img src="icons/Calendar Sun Grey.jpg" alt="">
+                    </div>
+                    <div>
+                        <h3 class="card-title">1st Sunday of each Month.</h3>
+                    </div>
+                    <div>
+                        <h5 class="card-buyin">$250 Freezeout.</h5>
+                        <h4 class="card-details">11AM Start. &ensp;Late Rego till 1.30PM</h4>
+                        <h4 class="card-details">50,000 Start Stack. &ensp;30 minute Blinds.</h4>
+                        <h4 class="card-details"><b>DEALERS PROVIDED</b> (If you Book)</h4>
+                        <div id="sunday-250-btn-img" class="tooltip"><span class="tooltiptext">Check the <br> $250 Structure</span>
+                            <a href="#popup1">
+                            <img id="qa-100x81-grey" src="img/qa Grey 139x113px.jpg"alt="" width="75" height="60"/>
+                            </a>
+                        </div>                        
+                        <h3 class="card-title">All other Sundays.</h3>
+                    </div>
+                        <h5 class="card-buyin">$110 with (1) Re-Buy.</h5>
+                        <h4 class="card-details">11AM Start. &ensp;Late Rego till 1.30PM</h4>
+                        <h4 class="card-details">50,000 Start Stack &ensp;20 minute Blinds.</h4>
+                    <div id="sunday-110-btn-img" class="tooltip"><span class="tooltiptext">Check the <br>  $110 Structure</span>
+                        <a href="#popup2">
+                        <img id="qa-100x81-grey" src="img/qa Grey 139x113px.jpg"alt="" width="75" height="60"/>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- GO TO THURSDAY -->
+                <div id="box-click2">
+                    <div id="cal-img">
+                        <img src="/icons/Calendar Thu Black.jpg" alt="">
+                    </div>
+                    <div>
+                        <h3 class="card-title">Every Thursday night.</h3>
+                    </div>
+                    <div>
+                        <h5 class="card-buyin">$60 Freeze-out.</h5>
+                        <br>
+                        <h4 class="card-details">6PM Start.</h4>
+                        <h4 class="card-details">Late Rego till 8.30PM</h4>
+                        <br>
+                        <h4 class="card-details">No Re-Buys.</h4>
+                        <h4 class="card-details">No Add-Ons.</h4>
+                        <h4 class="card-details">40,000 Start Stack.</h4>
+                        <h4 class="card-details">15 minute Blinds.</h4>
+                    </div>
+                    <div>
+                        <p class="card-text"></p>
+                    </div>
+                    <div id="thursday-60-btn-img"class="tooltip"><span class="tooltiptext">Check the <br> $60 Structure</span>
+                        <a href="#popup3">
+                        <img src="img/qa BLACK 139x113px.jpg" alt="" width="75" height="61">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- GO TO FRIDAY -->
+                <div id="box-click3">
+                    <div id="cal-img">
+                        <img src="/icons/Calendar Fri Grey.jpg" alt="">
+                    </div>
+                    <div>
+                        <h3 class="card-title">Every Friday night.</h3>
+                    </div>
+                    <div>
+                        <h5 class="card-buyin">$200 with (1) Re-Buy.</h5>
+                        <br>
+                        <h4 class="card-details">6PM Start.</h4>
+                        <h4 class="card-details">Late Rego till 7:30PM</h4>
+                        <br>
+                        <h4 class="card-details">Re-Buys till 7.30PM</h4>
+                        <h4 class="card-details">$100 Add-On at 8:00PM</h4>
+                        <h4 class="card-details">40,000 Start Stack.</h4>
+                        <h4 class="card-details">20 minute Blinds.</h4>
+                        <h4 class="card-details"><b>DEALERS PROVIDED</b> (If you Book)</h4>
+                    </div>
+                    <div>
+                        <p class="card-text"></p>
+                    </div>
+                    <div id="friday-200-btn-img"class="tooltip"><span class="tooltiptext">Check the <br> $200 Structure</span>
+                        <a href="#popup4">
+                        <img src="img/APS Grey 113x113px.jpg" alt="" width="75" height="75">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- GO TO SATELLITES -->
+                <div id="box-click4">
+                    <div id="cal-img">
+                        <img src="/icons/Calendar Mon Black.jpg" alt="">
+                    </div>
+                    <div>
+                        <h3 class="card-title">Satellites when available.</h3>
+                    </div>
+                    <div id="btn-img" class="tooltip"><span class="tooltiptext">Check out the <br> APT Satellites</span>
+                        <a href="#popup5">
+                        <img id="apt-satellites-btn-img" src="/img/APT logo Black 170x85px.jpg" alt="">
+                    </a>
+                    </div>
+                    <!-- <div class="bottom">
+                        <a href="#popup4" class="btn">Structures</a>
+                    </div> -->
+                    <div id="btn-img"class="tooltip"><span class="tooltiptext">Check out the <br>APL Satellites</span>
+                        <a href="#popup6">
+                        <img id="apl-satellites-btn-img" src="/img/APL 210x70px cropped black.jpg" alt="">
+                    </a>
+                    </div>
+                    <!-- <div class="bottom">
+                        <a href="#popup4" class="btn">Structures</a>
+                    </div> -->
+                    <div id="btn-img" class="tooltip"><span class="tooltiptext">Check out the <br>WPT Satellites</span>
+                        <a href="#popup7">
+                        <img id="wpt-satellites-btn-img" src="/img/WPT 162x70px black.jpg" alt="">
+                        </a>
+                    </div>
+                    <!-- <div class="bottom">
+                        <a href="#popup4" class="btn">Structures</a>
+                    </div> -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- LEARN TO PLAY -------------------------------------------------------- -->
+        <section class="container-learn">
+            <div id="learn-image">
+                <!-- ADD THIS BACK IN IF YOU WANT AN EXTRA IMAGE -->
+                
+                <img src="img/cards color 487x613px.jpg" alt=" "width="240" height="300">
+            </div>
+
+            <div id="learn-logo">
+                <img src="img/Jdub logo white 283x283px.jpg" alt=""width="250" height="250">
+            </div>
+            <div id="learn-text">
+                <h2>Learn The Fundamentals</h2>
+                <p>JDub Poker offers individual and small classes.</p>
+                <p>Live, face to face, at the poker table classes -  Learn to Play, Advanced Beginner and Masterclasses.</p>
+                <p id="text-bottom"><i>Coaching is available for intermediate to advanced players as well as boot camps to gain an edge on the upcoming big series tournaments.</i></p>
+                <a href="https://www.jdubpoker.com" target="_blank"  id="contact-btn"><i>Contact Janet</i></a>
+            </div>
+            
+        </section>
+        
+        <!-- SPONSORS -------------------------------------------------------------- -->
+        <section class="container-sponsor">
+            <div id="sponsor-text">
+                <h2>Valued Sponsor</h2>
+                <p>Are you looking for accounting solutions in Brisbane? Maybe you need help with your tax return? 
+                <br>
+                <br> Or perhaps you require property investment services to ensure that you’re establishing your property portfolio in the right way? 
+                <br>
+                <br> Whatever your tax, finance and accounting needs may be, we have you covered at MTA.
+                <br>
+                <br>
+                </p>
+                <p id="text-bottom"><em><i><b>1917 Logan Road, Upper Mt Gravatt QLD 4122.</i>
+                <br>
+                <br><i>reception@mtatax.com.au</i>
+                <br>
+                <br><i>1300 139 279</b></em></p> 
+                <a href="https://www.mtatax.com.au" target="_blank" id="sponsor-btn"><i>Contact Chris</i></a>
+            </div>
+            <div id="sponsor-logo">
+                <img src="img/MTA logo for tables 400mm x 128mm.jpg" alt=" "width="400" height="125">
+            </div>
+        </section>
+
+        <!-- ACCORDIAN SECTION ----------------ADD MORE FAQ HERE----------------- -->
+        <div id="accordian-section">
+            <h1 id="faq">Frequently Asked Questions</h1>
+            <div class="accordion">
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                        History of Brisbane Poker United
+                    </div>
+                    <div class="accordion-item-body">
+                        <div class="accordion-item-body-content">
+                            <p>
+                                <b></b>
+                                <br>Brisbane Poker United was formed in 2015 after Treasury Casino decided to cancel their Poker Tournaments.
+                                <br>It was seen that there was a need for good quality, well structured events.
+                                <br>
+                                <br>
+                            </p>
+
+                            <ul style="padding-left: 1rem;">
+                                <li>
+                                    <b>2016</b>
+                                    <br> The first Tournament event was held at the <em><b>Bulldogs Football Club</b></em> rooms in Capalaba.
+                                    <br>Later that same year it was decided to run a Last Man Standing competition, that involved 5 other local Poker clubs, spread over 21 different venues. 
+                                    <br>To enable all the points for the Last Man Standing competition to be grouped, an in-house database was built. 
+                                    <br>
+                                    <br>
+                                </li>
+                                <li><b>2017</b>
+                                    <br>January, the Last Man Standing competition got underway.
+                                    <br>Players were awarded points for attending and finishing in the top 4. 
+                                    <br>In April we moved to <em><b>Bulimba Bowls Club.</b></em>
+                                    <br>A Grand Final for the Last Man Standing was held in both June and December. 
+                                    <br>
+                                    <br>
+                                </li>
+                                <li><b>2018</b>
+                                    <br> In March our events were moved to a the <em><b>QA Hotel.</b></em>
+                                    <br> We introduced Dealers to our Sunday Deepstack Tournaments in June.  
+                                    <br>
+                                    <br>
+                                </li>
+                                <li><b>2019</b>
+                                    <br> The club designed a new logo and purchased new Tables to replace any damaged or worn tables. 
+                                    <br>New Poker Chips were purchased with the new logo. 
+                                    <br>
+                                    <br>
+                                </li>
+                                <li><b>2020</b>
+                                    <br> COVID-19 rules, restricted us to only 50% of our games during the year.
+                                    <br>
+                                    <br>
+                                </li>
+                                <li><b>2021</b>
+                                    <br> In February we contacted the "Hendon Mob" and asked if they would be interested in having our results added to their database.
+                                    <br>Once we were approved, all results dating back to the end of 2016 were seperately copied from our database onto their template and forwarded to the Hendon Mob. 
+                                    <br> Current results are sent every week or two to keep it up to date. 
+                                    <br>
+                                    <br> We were offered an additional venue, so in March we utilised the "Fern room" to trial additional Tournaments and Satellite events at the <em><b>Australian Poker School. </b></em> 
+                                    <br>
+                                    <br>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                        What is the COVID strategy?
+                    </div>
+                    <div class="accordion-item-body">
+                        <div class="accordion-item-body-content">
+                            <p>
+                                <b>COVID-19 Rules & Restrictions.</b>
+                                <br>
+                                <br>Brisbane Poker United is committed to following all orders put in place by the Qld Government to combat and prevent the spread of COVID-19. 
+                                <br>
+                                <br>We also strictly adhere to any additional venue rules that are in place.
+                                <br>
+                                <br>Our Duty of Care includes making sure that our Members can attend and play in a safe envoirenment.
+                                <br>
+                                <br>
+                            </p>
+                            <ul style="padding-left: 2rem;">
+                                <li><b>Density Restrictions</b> 
+                                    <br> All Density Restrictions will be maintained at all times.
+                                    <br>If required we will reduce our numbers by running 6 handed structured tournaments. 
+                                    <br>
+                                    <br>
+                                </li>
+                                <li><b>Masks</b> 
+                                    <br> When mandated by the Qld Government, masks must be worn covering both the mouth and nose.
+                                    <br> Masks must be worn at <b>ALL TIMES</b> except for when you are <b>ACTIVELY</b> drinking at the table.
+                                    <br>
+                                    <br> If you do not have a mask, we will supply you with one, <b> Free of Charge.</b>
+                                    <br>
+                                    <br>
+                                    <ul style="padding-left: 3rem;">
+                                        <li> Contrary to popular belief, holding a coffee or having a beer sitting in front of you does not protect you from getting or giving COVID-19.
+                                        <br>
+                                        <br>
+                                        </li>
+                                        <li> It is difficult to maintain the 1.5 metre social distancing rule at a poker table at the best of times, so adding excuses like, "I have a drink in front of me" do not go down well with players who are doing the right thing by both you and your families.
+                                        <br>
+                                        <br>
+                                        </li>
+                                        <li> The difference between the rules that allow people to not wear masks whilst drinking in general are formulated because you are not drinking or touching the same cup/glass (or using the same cutlery, in relation to eating) whereas, ALL poker players touch the same cards and the same chips.
+                                        <br> This is why we are strict in our interpretation of this rule.
+                                        <br>
+                                        <br>
+                                        </li>
+                                        <li> If you have an exemption to not wear a mask, we kindly ask you to carry this with you or have a photo of it on your phone. If you cannot produce this or choose not to produce it we will ask you to leave for the protection of others.
+                                            <br>
+                                            <br>
+                                            </li>
+                                    </ul>
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                        Where exactly are you located?
+                    </div>
+                    <div class="accordion-item-body">
+                        <div class="accordion-item-body-content">
+                            <ul style="padding-left: 1rem;">
+                                <li><b>Thursday and Sunday Tournaments</b> are held at the QA Hotel, cnr of James and Arthur Streets New Farm.</li>
+                                <li><b>Friday Tournaments and Monday Satellites</b> are held at Australian Poker School, 7 Ross Street Newstead.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                        How much are the Buy-Ins?
+                    </div>
+                    <div class="accordion-item-body">
+                        <div class="accordion-item-body-content">
+                            <ul style="padding-left: 1rem;">
+                                <li><b>Sunday</b>  - Buy-In $110 to $250.</li>
+                                <li><b>Thursday</b>  - Buy-In $60.</li>
+                                <li><b>Friday</b> - Buy-In $200.</li>
+                                <li><b>Satellites</b> - Depends on the event.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                        Can anyone Play?
+                    </div>
+                    <div class="accordion-item-body">
+                        <div class="accordion-item-body-content">
+                            <p>
+                                We welcome established and new players.
+                                <br>
+                                <br>Even if you have never played Texas Hold-Em, our group of Players will assist in getting you up to speed with:
+                                <br>How to Play.
+                                <br>The lingo.
+                                <br>Table etiquitte.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                        Are there any Meal Breaks?
+                    </div>
+                    <div class="accordion-item-body">
+                        <div class="accordion-item-body-content">
+                            <ul style="padding-left: 1rem;">
+                                <li><b>Sunday</b> - Lunch break is from 1:00PM until 1:30PM and Dinner break is from 7:00PM until 7:30PM.</li>
+                                <li><b>Thursday night</b> - Dinner break is from 8:00PM until 8:30PM.</li>
+                                <li><b>Friday night</b> - Dinner break is from 8:00PM until 8:30PM.</li>
+                                <li><b>Monday night Satellites</b> - No Dinner break.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                        What rules do you use to control your Tournaments?
+                    </div>
+                    <div class="accordion-item-body">
+                        <div class="accordion-item-body-content">
+                            Brisbane Poker United use the International Rules of Poker.
+                            <br>
+                        <br>Click the link below:
+                        <br>
+                        <a href="https://www.internationalpokerrules.com/" target="_blank">International Rules of Poker</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                        Are there any local rules that are different?
+                    </div>
+                    <div class="accordion-item-body">
+                        <div class="accordion-item-body-content">
+                            <ul style="padding-left: 1rem;">
+                                <p>
+                                    <b>Brisbane Poker United have adopted the following changes to the International rules of Poker:</b>
+                                </p>
+                                <br>
+                                <p>
+                                    <b>Acting Out of Turn.  This includes Betting, Calling, Raising or Folding.</b>
+                                    <br>(Folding Out of Turn includes leaving the table after your cards have been dealt, but before it is your turn). 
+                        <br>
+                                </p>
+                                <br>
+                                <p>
+                                    <b>PENALTIES THAT APPLY ARE AS FOLLOWS:</b>
+                                </p>
+                                <br>
+                                <li>1st offence - Verbal Warning.</li>
+                                <li>2nd offence - Half an Orbit penalty. (away from the table)</li>
+                                <li>3rd offence - Full Orbit penalty. (away from the table)</li>
+                                <li>4th offence - Exclusion from the Tournament.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                        What are your Payout Structures?
+                    </div>
+                    <div class="accordion-item-body">
+                        <div class="accordion-item-body-content">
+                            Payouts are generally 10% of the number of Players plus 1, rounded up or down.
+                            <br>
+                            <br><b>As an example:</b>
+                            <br>
+                            <br>If there are 42 Players - 10% of 42 = 4 plus 1, so Top 5 get paid.
+                            <br>If there are 46 Players - 10% of 46 = 5 plus 1, so Top 6 get paid.
+                            <br>    
+                            <br>** Players Paid and Payout amounts are at the sole discretion of the Tournament Director. **
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                        Any other Questions?
+                    </div>
+                    <div class="accordion-item-body">
+                        <div class="accordion-item-body-content">
+                            Feel free to contact us below, and we will endeavour to answer any questions.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- OUR TEAM ------------------------------- -->
+        <section id="our-team">
+            <div id="our-team-card">
+                <h1>Our Team</h1>
+                <h4>Meet the people who work behind the scenes to ensure an excellent Poker experience.</h4>
+                <div id="committee-cards">
+                    <div id="card1">
+                        <div class="card-body">
+                            <img id="committee-photo"  src="img/Keyes Fitzgerald.jpg" width="200" height="200">
+                            <h3 class="member">Keys Fitzgerald</h3>
+                            <h3 class="position">- Tourament Director -</h3>
+                            <p class="card-text"></p>
+                            <!-- IF SOCIAL MEDIA ICONS ARE REQUIRED USE THESE (ADD TO EACH COMMITTEE MEMBER)------------- -->
+                            <!--<a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                            <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
+                            <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                            <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>-->
+                        </div>
+                    </div>
+                    <div id="card2">
+                        <div class="card-body">
+                            <img id="committee-photo"src="img/Ian Church.jpg">
+                            <h3 class="member">Ian Church </h3>
+                            <h3 class="position">- President -</h3>
+                            <p class="card-text"></p>
+                        </div>
+                    </div>
+                    <div id="card3">
+                        <div class="card-body">
+                            <img id="committee-photo"src="img/Cozzie3.jpg">
+                            <h3 class="member">Chris Costanzo</h3>
+                            <h3 class="position">- Treasurer -</h3>
+                            <p class="card-text"></p>
+                        </div>
+                    </div>
+                    <div id="card4">
+                        <div class="card-body">
+                            <img id="committee-photo"src="img/Janet Wyvill.jpg">
+                            <h3 class="member">Janet Wyvill</h3>
+                            <h3 class="position">- Secretary -</h3>
+                            <p class="card-text"></p>
+                        </div>
+                    </div>
+                    <div id="card5">
+                        <div class="card-body">
+                            <img id="committee-photo"src="img/Milton3 - Copy.jpg">
+                            <h3 class="member">Milton Trickey</h3>
+                            <h3 class="position">- Marketing -</h3>
+                            <p class="card-text"></p>
+                        </div>
+                    </div>
+                    <div id="card6">
+                        <div class="card-body">
+                            <img id="committee-photo"src="img/Brian Goddard.jpg">
+                            <h3 class="member">Brian Goddard</h3>
+                            <h3 class="position">- Committee -</h3>
+                            <p class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT DETAILS ------------------------------- -->
+        <section id="contact-info">
+            <div id="contact-card">
+                <div id="contact-header">
+                    <h1 >Contact Info</h1>
+                </div>
+                <div id="details-cards">
+                    <div id="card10">
+                        <div class="card-body">
+                            <h3 id="qa-text"><span>QA Hotel:</span>  Cnr James & Arthur St New Farm</h3>
+                            <h3 id="aps-text"><span>Australian Poker School:</span>  7 Ross Street Newstead</h3>
+                            <h3 id="phone-text"><span>Phone Keys Fitzgerald:</span>  0416-974-216</h3>
+                            <h3 id="email-text"><span>Email:</span>  brisbanepokerunited@icloud.com</h3>
+                            <h3 id="website-text"><span>Website:</span>  brisbanepokerunited.org</h3>
+                        </div>           
+                        <a href="#popup10" class="button-contact">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAP DETAILS ------------------------------- -->
+        <section id="map-info">
+            <div id="map-card">
+                <div id="maps-cards">
+                    <div id="card11">
+                        <div class="card-body">
+                            <img src="img/QA map with marker 2-3rds.jpg">
+                            <h3 class="sites">QA Hotel </h3>
+                        </div>           
+                    </div>
+                    <div id="card12">
+                        <div class="card-body">
+                            <img src="img/Boo map with marker 2-3rds.jpg">
+                            <h3 class="sites">Australian Poker School</h3>
+                        </div>           
+                    </div>
+                </div>
+            </div>
+        </section> 
+
+
+
+        <!-- FOOTER ------------------------------------------------------------------- -->
+        <footer id="footer">
+            <div class="container">
+                <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></button>
+                <!-- <a id="go-up" href="#joinus-section"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a> -->
+                <p id="copyright">Copyright &copy; 2021 - Brisbane Poker United  -  a not for profit Organisation</p>
+                <a href="#" class=></a>
+                <a href="#" class=></a>
+            </div>
+        </footer>
+
+        <!-- UP ARROW----------------------------------------------------- -->
+        <!-- <div id="float">
+            <p>text is here</p>
+            <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+            <i id="up-arrow" class="fa-solid fa-circle-chevron-up"></i>
+            <i id="up-arrow" class="bi bi-arrow-up-circle h1"></i>
+        </div> -->
+
+        <!-- THESE ARE THE CARDS, NO NEED TO LIVE INSIDE A MAIN DIV - ADD AS REQUIRED and then ADD TO css/popup-css-only.css -->
+
+        <!-- CARD 1 Sunday $250-->
+        <div id="popup1" class="popup1">
+            <a href="#" class="close">&times;</a>
+            <h2>1st Sunday of the Month.</h2>
+            <img class="flyers" src="structures/Sunday $250.jpg" alt="">
+        </div>
+        <a href="#" class="close-popup1"></a>
+
+        <!-- CARD 2 Sunday $110-->
+        <div id="popup2" class="popup2">
+            <a href="#" class="close">&times;</a>
+            <h2>All other Sundays.</h2>
+            <img class="flyers" src="structures/Sunday $110.jpg" alt="">
+        </div>
+        <a href="#" class="close-popup2"></a>
+
+        <!-- CARD 3 Thursday $60-->
+        <div id="popup3" class="popup3">
+            <a href="#" class="close">&times;</a>
+            <h2>Every Thursday Night.</h2>
+            <img class="flyers" src="structures/Thursday $60.jpg" alt="">
+        </div>
+        <a href="#" class="close-popup3"></a>
+
+        <!-- CARD 4 Friday $200-->
+        <div id="popup4" class="popup4">
+            <a href="#" class="close">&times;</a>
+            <h2>Every Friday Night.</h2>
+            <img class="flyers" src="structures/Friday $200.jpg" alt="">
+        </div>
+        <a href="#" class="close-popup4"></a>
+
+        <!-- CARD 5 APT Satellites-->
+        <div id="popup5" class="popup5">
+            <a href="#" class="close">&times;</a>
+            <h2>APT Satellites.</h2>
+            <img class="flyers" src="structures/Monday $130 Satellite QA.jpg" alt="">
+        </div>
+        <a href="#" class="close-popup5"></a>
+
+        <!-- CARD 6 APL Satellites-->
+        <div id="popup6" class="popup6">
+            <a href="#" class="close">&times;</a>
+            <h2>APL Satellites.</h2>
+            <img class="flyers" src="structures/APL The Ville.jpg" alt="">
+        </div>
+        <a href="#" class="close-popup6"></a>
+                
+        <!-- CARD 7 WPT Satellites-->
+        <div id="popup7" class="popup7">
+            <a href="#" class="close">&times;</a>
+            <h2>WPT Satellites.</h2>
+            <div class="img-magnifier-container">
+                <img class="flyers" src="structures/WPT QPC.jpg" alt="">
+            </div>
+        </div>
+        <a href="#" class="close-popup7"></a>
+                        
+        <!-- CARD 8 Leaderboard-->
+        <div id="popup8" class="popup8">
+            <a href="#" class="close">&times;</a>
+            <h2>Top 10 Leaderboard.</h2>
+                <div class="img-magnifier-container">
+                <img id="myimage" src="img/top 10 leaderboard.jpg" width="580" height="860" alt="">
+                </div>
+        </div>
+        <a href="#" class="close-popup8"></a>
+
+        <!-- CARD 9 Stats-->
+        <div id="popup9" class="popup9">
+            <a href="#" class="close">&times;</a>
+            <h2>Stats.</h2>
+            <img class="flyers" src="flyers/22-12-19 Double Header Sunday Santa.jpg" alt="">
+        </div>
+        <a href="#" class="close-popup9"></a>
+
+        <!-- CARD 10 Contact Us Form-->
+        <div id="popup10" class="popup10">
+            <a href="#" class="close">&times;</a>
+                <!-- THIS IS FOR THE CONTACT FORM, -  css/contact-form.css -->
+        <div class="fcf-body">
+            <div id="fcf-form">
+            <h3 id="contact-us-text" class="fcf-h3">Contact us</h3>
+                <form id="fcf-form-id" class="fcf-form-class" method="post" action="contact-form-process.php">
+                    <div class="fcf-form-group">
+                        <label id="your-name-text" for="Name" class="fcf-label">Your name</label>
+                        <div class="fcf-input-group">
+                            <input type="text" id="Name" name="Name" class="fcf-form-control" required>
+                        </div>
+                    </div>
+                    <div class="fcf-form-group">
+                        <label for="Email" class="fcf-label">Your email address</label>
+                        <div class="fcf-input-group">
+                            <input type="email" id="Email" name="Email" class="fcf-form-control" required>
+                        </div>
+                    </div>
+                    <div class="fcf-form-group">
+                        <label for="Message" class="fcf-label">Your message</label>
+                        <div class="fcf-input-group">
+                            <textarea id="Message" name="Message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
+                        </div>
+                    </div>
+                    <div id="reason">
+                        <label for="Reason" class="fcf-label">Please select from the following so we may address your concerns.</label>
+                        <div id="reason-checkboxes">
+                        <form action="index.php">
+                            <input type="checkbox" name="query" value="Membership"> Membership<br>
+                            <input type="checkbox" name="query" value="Structures"> Structures<br>
+                            <input type="checkbox" name="query" value="Buy-Ins"> Buy-Ins<br>
+                            <input type="checkbox" name="query" value="other"> Other<br>
+                        </form>
+                        </div>
+                    </div>
+                    <div class="fcf-form-group">
+                        <button type="submit" id="fcf-button" class="fcf-btn fcf-btn-primary fcf-btn-lg fcf-btn-block">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        </div>
+        <a href="#" class="close-popup10"></a>
+
+
+        <!--THIS SCRIPT ALLOWS THE MENU TO APPEAR AND DISSAPEAR  -->
+        <script>
+            const toggle = document.getElementById('toggle');
+            const topmenu = document.getElementById('topmenu');
+
+            document.onclick = function(e){
+                if(e.target.id !== 'topmenu' && e.target.id !== 'toggle')
+                {
+                    toggle.classList.remove('active');
+                    topmenu.classList.remove('active') 
+                }
+            }
+            
+                toggle.onclick = function(){
+                    toggle.classList.toggle('active');
+                    topmenu.classList.toggle('active')
+            }
+        </script>
+
+
+        <!-- THIS SCRIPT RUNS THE HENDON MOB SEARCH -->
+        <script type="text/javascript">
+            function clickyClick () {
+            url = "https:/www.thehendonmob.com/search/?q=" + document.getElementById("user-input").value 
+            window.open(url, '_blank');
+            }
+        </script>
+
+
+        <!-- THIS SCRIPT RUNS THE ACCORDIAN SECTION -->
+        <script src ="js/accordian.js"></script>
+
+
+        <!-- THIS SCRIPT SETS THE MAGNIFICATION, SCRIPT IS UP IN HEAD SECTION -->
+        <script>
+            /* Initiate Magnify Function
+            with the id of the image, and the strength of the magnifier glass:*/
+            magnify("myimage", 1.5);
+        </script>
+
+
+        <!-- THIS SCRIPT SCROLLS THE PAGE UP WITH THE GOLD UP ARROW -->
+        <script>
+            //Get the button
+            var mybutton = document.getElementById("myBtn");
+            
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {scrollFunction()};
+            
+            function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+            }
+            
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+            }
+        </script>
+
+    </body>
+</html>

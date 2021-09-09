@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="test-contact-form.css">
+    <link rel="stylesheet" href="test-contact-form.php">
+</head>
+<body>
+    <h2>Simple PHP Contact Form</h2>
+<div class="contactFrm">
+    <?php if(!empty($statusMsg)){ ?>
+        <p class="statusMsg <?php echo !empty($msgClass)?$msgClass:''; ?>"><?php echo $statusMsg; ?></p>
+    <?php } ?>
+    <form action="" method="post">
+        <h4>Name</h4>
+        <input type="text" name="name" placeholder="Your Name" required="">
+        <h4>Email </h4>
+        <input type="email" name="email" placeholder="email@example.com" required="">
+        <h4>Subject</h4>
+        <input type="text" name="subject" placeholder="Write subject" required="">
+        <h4>Message</h4>
+        <textarea name="message" placeholder="Write your message here" required=""> </textarea>
+        <input type="submit" name="submit" value="Submit">
+        <div class="clear"> </div>
+    </form>
+</div>
+</body>
+</html>
