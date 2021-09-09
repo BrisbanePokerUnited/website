@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+:root {
+  --light-blue:rgb(13,110,253);       /* This was my Original Blue */
+  --dark-blue:#34495e;                /* Hendon Mob, Sponsor, Our Team, Maps */
+  --gold:rgb(255,193,7);              /* Best Poker, Box Headers */
+  --black-mine:rgb(33,36,41);         /* Nav Bar,  Check Yours, Box 2 & 4, Footer */
+  --grey:rgb(108,117,125);            /* Box 1 & 3 */
+  --white: #ffffff;                   /* General Text */
+}
+
+#accordian-section {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--white);
+  color: var(--dark-blue);
+  top: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  position: relative;
+}
+#faq {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 1.5rem;
+  color: var(--dark-blue);
+}
+.accordion {
+  width: 90%;
+  max-width: 90%;
+  margin: 2rem auto;
+}
+.accordion-item {
+  background-color: var(--white);
+  color: #111;
+  margin: .5rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);
+}
+.accordion-item-header {
+  padding: 0.5rem 3rem 0.5rem 1rem;
+  min-height: 3.5rem;
+  line-height: 1.25rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.accordion-item-header::after {
+  content: "\002B";
+  font-size: 1.5rem;
+  position: absolute;
+  right: 1rem;
+}
+.accordion-item-header.active::after {
+  content: "\2212";
+}
+.accordion-item-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.accordion-item-body-content {
+  padding: 1rem;
+  line-height: 1.5rem;
+  border-top: 1px solid;
+  border-image: linear-gradient(to right, transparent, #345e41, transparent) 1;
+}
+
+@media(max-width:767px) {
+  html {
+    font-size: 14px;
+  }
+}
